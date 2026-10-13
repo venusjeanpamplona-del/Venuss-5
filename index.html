@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Venus | DHT11 Monitoring
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="page">
+
+        <!-- =========================================
+             HEADER
+        ========================================== -->
+
+        <header class="topbar">
+
+            <div class="brand">
+
+                <div class="brand-name">
+                    Venus Jean Pamplona
+                </div>
+
+                <div class="brand-sub">
+                    DHT11 REALTIME MONITOR
+                </div>
+
+            </div>
+
+
+            <div
+                class="status"
+                id="firebaseStatus"
+            >
+
+                <span
+                    class="status-dot"
+                    id="statusDot"
+                ></span>
+
+                <span id="statusText">
+                    CONNECTING
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================================
+             CURRENT READINGS
+        ========================================== -->
+
+        <section class="current-section">
+
+
+            <!-- TEMPERATURE -->
+
+            <div class="sensor-card">
+
+                <div class="sensor-label">
+                    TEMPERATURE
+                </div>
+
+                <div
+                    id="currentTemperature"
+                    class="sensor-value"
+                >
+                    -- °C
+                </div>
+
+                <div class="sensor-description">
+                    DHT11 temperature reading
+                </div>
+
+            </div>
+
+
+            <!-- HUMIDITY -->
+
+            <div class="sensor-card">
+
+                <div class="sensor-label">
+                    HUMIDITY
+                </div>
+
+                <div
+                    id="currentHumidity"
+                    class="sensor-value"
+                >
+                    -- %
+                </div>
+
+                <div class="sensor-description">
+                    DHT11 humidity reading
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             GRAPH
+        ========================================== -->
+
+        <section class="card">
+
+            <div class="section-header">
+
+                <div>
+
+                    <div class="eyebrow">
+                        SENSOR DATA
+                    </div>
+
+                    <h2>
+                        Sensor Graph
+                    </h2>
+
+                </div>
+
+
+                <select id="graphDate">
+
+                    <option value="">
+                        Select Date
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="chart-container">
+
+                <canvas
+                    id="sensorChart"
+                ></canvas>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             HISTORY
+        ========================================== -->
+
+        <section class="card">
+
+            <div class="history-header">
+
+                <div>
+
+                    <div class="eyebrow">
+                        DATABASE RECORDS
+                    </div>
+
+                    <h2>
+                        Sensor History
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="toggleHistory"
+                    class="action-button"
+                    type="button"
+                >
+                    SHOW HISTORY
+                </button>
+
+            </div>
+
+
+            <div
+                id="historyContent"
+                class="hidden"
+            >
+
+                <div class="history-controls">
+
+                    <label for="historyDate">
+                        SELECT DATE
+                    </label>
+
+                    <select id="historyDate">
+
+                        <option value="">
+                            Select Date
+                        </option>
+
+                    </select>
+
+
+                    <span id="recordCount">
+                        0 records
+                    </span>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    TIME
+                                </th>
+
+                                <th>
+                                    TEMPERATURE
+                                </th>
+
+                                <th>
+                                    HUMIDITY
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="historyTableBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="3"
+                                    class="empty"
+                                >
+                                    No sensor data available.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             WIFI MANAGER
+        ========================================== -->
+
+        <section class="wifi-section">
+
+            <div class="eyebrow">
+                DEVICE SETTINGS
+            </div>
+
+            <h2>
+                WiFi Manager
+            </h2>
+
+            <p>
+                Configure the WiFi connection
+                used by the ESP32 DHT11 monitor.
+            </p>
+
+            <a
+                href="/change-wifi"
+                class="wifi-button"
+            >
+                CHANGE WIFI
+            </a>
+
+        </section>
+
+
+        <!-- =========================================
+             FOOTER
+        ========================================== -->
+
+        <footer>
+
+            DHT11 MONITOR
+            •
+            ESP32 + FIREBASE
+            •
+            VENUS
+
+        </footer>
+
+    </div>
+
+
+    <!-- =========================================
+         CHART.JS
+    ========================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js"
+    ></script>
+
+
+    <!-- =========================================
+         FIREBASE APP
+    ========================================== -->
+
+    <script
+        type="module"
+        src="app.js"
+    ></script>
+
+</body>
+
+</html>
